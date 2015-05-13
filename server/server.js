@@ -101,6 +101,10 @@ app.post('/newreview', function(req, res) {
     });
 });
 
+app.post('/submit-video', function(req, res) {
+  var videoInfo = req.files;
+});
+
 
 // update the average rating of the artist after 
 //the user add a new review for the artist 
