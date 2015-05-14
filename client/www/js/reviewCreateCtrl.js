@@ -71,12 +71,12 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
   };
 
   $scope.recordOrSave = function() {
-    if ($scope.toggle.recordOrSave === "record") {
+    if ($scope.toggle.recordOrSave === "Record") {
       $scope.recordVideo();
     } else {
       $scope.saveVideo();
     }
-  }
+  };
 
   $scope.recordVideo = function(){
     console.log('record video');
