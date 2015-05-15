@@ -18,7 +18,7 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
   $scope.postReview = function (){
     console.log('post video');
     return $http({
-      method:"post",
+      method:"POST",
       enctype:"multipart/form-data",
       url:"/api/photo",
       data: $scope.video

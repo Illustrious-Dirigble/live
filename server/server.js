@@ -77,7 +77,6 @@ app.post('/api/photo',function(req,res){
   var uniqueName = "https://hr26livetranscode.s3.amazonaws.com/"+videoHash+".mp4";
   if (done === true) {
     done = false;
-    //console.log(req.files);
     res.json({videoURL:uniqueName});
   }
 });
