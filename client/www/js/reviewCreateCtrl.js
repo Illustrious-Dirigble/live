@@ -81,6 +81,10 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
   $scope.recordVideo = function(){
     console.log('record video');
     ionic.trigger('click', {target: $(".reviewVideoCapture")}, true, true);
+    ionic.trigger('tap', {target: $(".reviewVideoCapture")}, true, true);
+    ionic.trigger('touch', {target: $(".reviewVideoCapture")}, true, true);
+    $('.reviewVideoCapture').trigger('click');
+    $('.reviewVideoCapture').trigger('tap');
   };
 
   $scope.saveVideo = function(){
