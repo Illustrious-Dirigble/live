@@ -15,6 +15,16 @@
       <input class="button button-block" type="submit" value="Upload">
     </form>
 
+    <div class="row">
+      <div class="col">
+        <button class="button button-block" ng-click="recordOrSave()" ng-model="toggle.recordOrSave"> {{toggle.recordOrSave}}
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-block">Upload</button>
+      </div>
+    </div>
+
     <form class="reviewForm">
         <div class="rating">
           <rating ng-model="review.rating" max="max"></rating>
@@ -28,15 +38,6 @@
           <label class="item item-input">
             <input ng-model="review.venue" type="text" placeholder="Venue?">
           </label>
-          <div class="row">
-            <div class="col">
-              <button class="button button-block" ng-click="recordOrSave()" ng-model="toggle.recordOrSave"> {{toggle.recordOrSave}}
-              </button>
-            </div>
-            <div class="col">
-              <button class="button button-block">Upload</button>
-            </div>
-          </div>
           <label class="item item-input reviewText">
             <textarea ng-model="review.textReview" placeholder="How was the performance?"></textarea>
           </label>
