@@ -103,5 +103,5 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
 }
 
 angular.module('liveApp')
-.controller('reviewCreateCtrl', ['$scope', '$http', '$location', 'liveFactory', reviewCreateCtrl]);
+.controller('reviewCreateCtrl', ['$scope', '$http', '$location', '$interval', 'liveFactory', reviewCreateCtrl]);
 
