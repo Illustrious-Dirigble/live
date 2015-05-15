@@ -78,6 +78,11 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
     }
   };
 
+  $('#reviewVideoCapture').change(function() {
+    $scope.toggleRecordOrSave();
+  });
+
+
   $scope.recordVideo = function(){
     console.log('record video');
     //ionic.trigger('click', {target: $(".reviewVideoCapture")});
