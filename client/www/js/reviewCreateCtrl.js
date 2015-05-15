@@ -16,33 +16,17 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
   };
   // post a new review for the artist
   $scope.postReview = function (){
-    $('#submitFormButton').trigger('click');
-    /*
+    $scope.video = $('#reviewVideoCapture').get(0).files[0]; 
     var fd = new FormData();
     fd.append('file', $scope.video);
     $http.post('/api/photo', fd, {
         transformRequest: angular.identity,
         headers: {'Content-Type': undefined}
     })
-    .success(function(){
-      console.log('success');
-    })
-    .error(function(){
-      console.log('error');
-    });
-    */
-    /*
-    console.log('post video');
-    return $http({
-      method:"POST",
-      ContentType:"multipart/form-data",
-      url:"/api/photo",
-      data: $scope.video
-    })
-    .then(function(resp) {
+    .success(function(data){
       console.log('post review');
-      $scope.review.videoURL = resp.data.videoURL || "http://techslides.com/demos/sample-videos/small.mp4";
-      console.log('video URL',$scope.review.videoURL);
+      $scope.review.videoURL = data.videoURL; 
+      console.log('review',$scope.review);
       return $http({
         method: 'POST',
         url: '/newreview',
@@ -54,8 +38,10 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
         $scope.getAvgRating();
         return resp.data;
       });
+    })
+    .error(function(){
+      console.log('error');
     });
-    */
   };
 
   // Retrieve average rating from all reviews of that artist
@@ -118,7 +104,6 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
   
   function waitForVideoFile(){
     $scope.video = $('#reviewVideoCapture').get(0).files[0]; 
-    console.log($scope.video);
     if ($scope.video) {
       $scope.toggleRecordOrSave();
     }

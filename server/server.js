@@ -11,13 +11,14 @@ var app = express();
 var uuid = require('uuid');
 var multer = require('multer');
 var fs = require('fs');
+var config = require('../config.js');
 
 /*
  * Load the S3 information from the environment variables.
  */
-var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
-var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
-var S3_BUCKET = process.env.S3_BUCKET;
+var AWS_ACCESS_KEY = config.AWS_ACCESS_KEY;
+var AWS_SECRET_KEY = config.AWS_SECRET_KEY;
+var S3_BUCKET = config.S3_BUCKET;
 
 app.set('views', '../client/www');
 app.set('view engine', 'jade');
@@ -26,7 +27,7 @@ app.use(express.static(__dirname + '/../client/www'));
 // app.use(favicon(__dirname + '/favicon.ico'));
 
 
-app.use(bodyParser.urlencoded({extended: true}));
+//app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
