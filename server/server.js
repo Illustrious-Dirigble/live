@@ -79,7 +79,7 @@ app.post('/api/photo',function(req,res){
     done = false;
     //console.log(req.files);
     res.data({videoURL:uniqueName});
-    //res.end();
+    res.end();
   }
 });
 
