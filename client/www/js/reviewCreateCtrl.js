@@ -78,7 +78,7 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
     }
   };
 
-  $('#reviewVideoCapture').change(function() {
+  document.getElementById('reviewVideoCapture').onchange(function() {
     $scope.toggleRecordOrSave();
   });
 
