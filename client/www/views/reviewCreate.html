@@ -1,7 +1,7 @@
 <!-- View for creating a new review-->
 
 <ion-view title="reviewCreate" cache-view="false">
-  
+
   <ion-header-bar align-title="left" class="bar-light bar-header reviewCreateHeader">
     <i class="icon ion-arrow-left-c" ng-click="goBack()"></i>
     <h1>Leave a Review</h1>
@@ -9,15 +9,18 @@
   </ion-header-bar>
 
   <ion-content padding="false" class="reviewPage">
-
+  
+  <form id="uploadForm" enctype="multipart/form-data" action="/api/photo" method="post">
     <input ng-hide="true" id="reviewVideoCapture" placeholder="Record a Video" ng-model="movie" type="file" accept="video/*;capture=camcorder"/>
+    <input type="submit" value="Upload Image" name="submit">
+  </form>
 
     <form class="reviewForm">
         <div class="rating">
           <rating ng-model="review.rating" max="max"></rating>
         </div>
         <!-- asking the user to fill out a review -->
-        
+
         <div class="padding">
           <label class="item item-input">
             <input ng-model="review.username" type="text" placeholder="Your name?" required>

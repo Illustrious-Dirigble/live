@@ -17,14 +17,23 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
   // post a new review for the artist
   $scope.postReview = function (){
     return $http({
-      method: 'POST',
-      url: '/newreview',
-      data: $scope.review
+      method:"post",
+      enctype:"multipart/form-data",
+      url:"/api/photo",
+      data: $scope.video
     })
-    .then(function (resp) {
-      console.log('response data:', resp.data);
-      $scope.getAvgRating();
-      return resp.data;
+    .then(function(resp) {
+      $scope.review.videoURL = resp.data.videoURL;
+      return $http({
+        method: 'POST',
+        url: '/newreview',
+        data: $scope.review
+      })
+      .then(function (resp) {
+        console.log('response data:', resp.data);
+        $scope.getAvgRating();
+        return resp.data;
+      });
     });
   };
 
@@ -84,7 +93,8 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
   });
 
   $scope.timer = $interval(function(){
-    if ( $('#reviewVideoCapture').get(0).files[0] ) {
+    $scope.video = $('#reviewVideoCapture').get(0).files[0]; 
+    if ($scope.video) {
       $scope.toggleRecordOrSave();
     }
   }, 50);

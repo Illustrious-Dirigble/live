@@ -39,12 +39,14 @@ var done = false;
  * /api/photo. You will receive a console log with the link to the transcoded version of
  * the video.
  */
+var videoHash;
 
 app.use(multer({ dest: './uploads/',
  rename: function (fieldname, filename) {
     return filename+Date.now();
   },
   onFileUploadStart: function (file) {
+    videoHash = uuid.v1();
     console.log(file.originalname + ' is starting ...');
   },
   onFileUploadComplete: function (file) {
@@ -57,15 +59,14 @@ app.use(multer({ dest: './uploads/',
 }));
 
 function uploadAmazon(originalName, data) {
-  var uniqueName = uuid.v1();
   aws.config.update({accessKeyId: AWS_ACCESS_KEY , secretAccessKey: AWS_SECRET_KEY });
   var s3 = new aws.S3();
-  var params = {Bucket: S3_BUCKET, Key: uniqueName, Body: data, ACL: 'public-read'};
+  var params = {Bucket: S3_BUCKET, Key: videoHash, Body: data, ACL: 'public-read'};
   s3.putObject(params, function(err, info) {
     if (err) {
       console.log(err);
     } else {
-      console.log("Successfully uploaded info to bucket URL is https://hr26livetranscode.s3.amazonaws.com/"+uniqueName+".mp4");
+      console.log("Successfully uploaded info to bucket URL is https://hr26livetranscode.s3.amazonaws.com/"+videoHash+".mp4");
     }
   });
 }
@@ -73,10 +74,12 @@ function uploadAmazon(originalName, data) {
 // Once multer is done uploading file to uploads folder, it'll end the response with 'File uploaded'
 
 app.post('/api/photo',function(req,res){
+  var uniqueName = "https://hr26livetranscode.s3.amazonaws.com/"+videoHash+".mp4";
   if (done === true) {
     done = false;
-    console.log(req.files);
-    res.end("File uploaded.");
+    //console.log(req.files);
+    res.data({videoURL:uniqueName});
+    //res.end();
   }
 });
 
