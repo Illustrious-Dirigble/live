@@ -1,4 +1,4 @@
-function reviewCreateCtrl($scope, $http, $location, liveFactory){
+function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
 
   $scope.review = {};
   $scope.max = 5;
@@ -88,7 +88,7 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
     timer();
   };
 
-  var timer = $timeout(function(){
+  var timer = $interval(function(){
     if ( $('#reviewVideoCapture').get(0).files[0] ) {
       $scope.toggleRecordOrSave();
       timer.cancel();
