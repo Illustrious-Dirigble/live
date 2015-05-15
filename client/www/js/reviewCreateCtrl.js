@@ -83,7 +83,7 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
     //ionic.trigger('click', {target: $(".reviewVideoCapture")});
     //ionic.trigger('tap', {target: $(".reviewVideoCapture")});
     //ionic.trigger('touch', {target: $(".reviewVideoCapture")});
-    $('.reviewVideoCapture').trigger('click');
+    $('#reviewVideoCapture').trigger('click');
     //$('.reviewVideoCapture').trigger('tap');
   };
 
