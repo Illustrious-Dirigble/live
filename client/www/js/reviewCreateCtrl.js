@@ -68,6 +68,7 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
 
   $scope.toggleRecordOrSave = function() {
     $scope.toggle.recordOrSave = $scope.toggle.recordOrSave === "Record" ? "Save" : "Record";
+    $interval.cancel($scope.timer);
   };
 
   $scope.recordOrSave = function() {
@@ -85,7 +86,6 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
   $scope.timer = $interval(function(){
     if ( $('#reviewVideoCapture').get(0).files[0] ) {
       $scope.toggleRecordOrSave();
-      $interval.cancel($scope.timer);
     }
   }, 50);
 
