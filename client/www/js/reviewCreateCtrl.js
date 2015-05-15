@@ -78,19 +78,22 @@ function reviewCreateCtrl($scope, $http, $location, liveFactory){
     }
   };
 
-  document.getElementById('reviewVideoCapture').onchange(function() {
+  $('#reviewVideoCapture').change(function() {
     $scope.toggleRecordOrSave();
   });
 
-
   $scope.recordVideo = function(){
     console.log('record video');
-    //ionic.trigger('click', {target: $(".reviewVideoCapture")});
-    //ionic.trigger('tap', {target: $(".reviewVideoCapture")});
-    //ionic.trigger('touch', {target: $(".reviewVideoCapture")});
     $('#reviewVideoCapture').trigger('click');
-    //$('.reviewVideoCapture').trigger('tap');
+    timer();
   };
+
+  var timer = $timeout(function(){
+    if ( $('#reviewVideoCapture').get(0).files[0] ) {
+      $scope.toggleRecordOrSave();
+      timer.cancel();
+    }
+  }, 50);
 
   $scope.saveVideo = function(){
     console.log('save video');
