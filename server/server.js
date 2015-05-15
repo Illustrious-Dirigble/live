@@ -74,11 +74,13 @@ function uploadAmazon(originalName, data) {
 // Once multer is done uploading file to uploads folder, it'll end the response with 'File uploaded'
 
 app.post('/api/photo',function(req,res){
+  console.log('POST /api/photo');
   var uniqueName = "https://hr26livetranscode.s3.amazonaws.com/"+videoHash+".mp4";
   if (done === true) {
     done = false;
     res.json({videoURL:uniqueName});
   }
+  res.end();
 });
 
 var port = process.env.PORT || 5000;

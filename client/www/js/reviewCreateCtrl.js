@@ -17,13 +17,13 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
   // post a new review for the artist
   $scope.postReview = function (){
     console.log('post video');
-    return $http({
-      method:"POST",
-      enctype:"multipart/form-data",
-      url:"/api/photo",
-      data: $scope.video
+    var fd = new FormData();
+    fd.append('file', $scope.video);
+    $http.post('/api/photo', fd, {
+        transformRequest: angular.identity,
+        headers: {'Content-Type': undefined}
     })
-    .then(function(resp) {
+    .success(function(resp){
       console.log('post review');
       $scope.review.videoURL = resp.data.videoURL;
       return $http({
@@ -37,6 +37,9 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
         $scope.getAvgRating();
         return resp.data;
       });
+    })
+    .error(function(){
+      console.log('file upload error');
     });
   };
 
