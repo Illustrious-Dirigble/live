@@ -10,6 +10,7 @@ var aws = require('aws-sdk');
 var app = express();
 var uuid = require('uuid');
 var multer = require('multer');
+var fs = require('fs');
 
 /*
  * Load the S3 information from the environment variables.

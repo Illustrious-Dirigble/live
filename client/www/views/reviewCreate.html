@@ -9,13 +9,9 @@
   </ion-header-bar>
 
   <ion-content padding="false" class="reviewPage">
-  <form id        =  "uploadForm"
-        enctype   =  "multipart/form-data"
-        action    =  "/api/photo"
-        method    =  "POST"
-        ng-hide   = true>
-    <input ng-hide="true" id="reviewVideoCapture" placeholder="Record a Video" ng-model="movie" type="file" accept="video/*"/>
-    <input ng-hide="true" id="submitFormButton" type="submit" value="Upload Image" name="submit">
+  <form ng-hide=true enctype="multipart/form-data" action="/api/photo" method="POST" >
+    <input ng-hide="true" id="reviewVideoCapture" type="file" accept="video/*"/>
+    <input ng-hide="true" id="submitFormButton" type="submit"> 
   </form>
 
     <form class="reviewForm">
@@ -37,7 +33,7 @@
               </button>
             </div>
             <div class="col">
-              <button class="button button-block">Upload</button>
+              <button ng-click="showVideo()" class="button button-block uploadVideoButton">Upload</button>
             </div>
           </div>
           <label class="item item-input reviewText">

@@ -16,7 +16,8 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
   };
   // post a new review for the artist
   $scope.postReview = function (){
-    //$('#submitFormButton').trigger('click');
+    $('#submitFormButton').trigger('click');
+    /*
     var fd = new FormData();
     fd.append('file', $scope.video);
     $http.post('/api/photo', fd, {
@@ -29,6 +30,7 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
     .error(function(){
       console.log('error');
     });
+    */
     /*
     console.log('post video');
     return $http({
@@ -111,24 +113,30 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
     $scope.toggleRecordOrSave();
   });
 
-  $scope.timer = $interval(function(){
+  $scope.timer = $interval( waitForVideoFile.call($scope), 50);
+  
+  
+  function waitForVideoFile(){
     $scope.video = $('#reviewVideoCapture').get(0).files[0]; 
-    console.log('video data',$scope.video);
+    console.log($scope.video);
     if ($scope.video) {
       $scope.toggleRecordOrSave();
     }
-  }, 50);
+  }
 
   $scope.recordVideo = function(){
     console.log('record video');
     $('#reviewVideoCapture').trigger('click');
-    $scope.timer();
+    //$scope.timer();
   };
 
+  $scope.showVideo = function(){
+    console.log($('#reviewVideoCapture').get(0));
+    console.log($('#reviewVideoCapture').get(0).files[0]); 
+  };
 
   $scope.saveVideo = function(){
     console.log('save video');
-    //ionic.trigger('click', {target: $(".reviewVideoCapture")}, true, true);
   };
 
 }
