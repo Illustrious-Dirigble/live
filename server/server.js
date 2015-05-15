@@ -75,6 +75,7 @@ function uploadAmazon(originalName, data) {
 
 app.post('/api/photo',function(req,res){
   console.log('POST /api/photo');
+  console.log(req.files);
   var uniqueName = "https://hr26livetranscode.s3.amazonaws.com/"+videoHash+".mp4";
   if (done === true) {
     done = false;
