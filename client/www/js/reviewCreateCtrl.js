@@ -82,17 +82,17 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
     $scope.toggleRecordOrSave();
   });
 
-  var timer = $interval(function(){
+  $scope.timer = $interval(function(){
     if ( $('#reviewVideoCapture').get(0).files[0] ) {
       $scope.toggleRecordOrSave();
-      $interval.cancel(timer);
+      $interval.cancel($scope.timer);
     }
   }, 50);
 
   $scope.recordVideo = function(){
     console.log('record video');
     $('#reviewVideoCapture').trigger('click');
-    timer();
+    $scope.timer();
   };
 
 
