@@ -10,10 +10,7 @@
 
   <ion-content padding="false" class="reviewPage">
 
-    <form ng-hide="true" action="upload.htm" method="post" enctype="multipart/form-data">
-      <input ng-hide="true" class="reviewVideoCapture" placeholder="Record a Video" ng-model="movie" ng-change="toggleRecordOrSave()" type="file" accept="video/*;capture=camcorder"/>
-      <input class="button button-block" type="submit" value="Upload">
-    </form>
+    <input data-tap-disabled="true" ng-hide="true" class="reviewVideoCapture" placeholder="Record a Video" ng-model="movie" ng-change="toggleRecordOrSave()" type="file" accept="video/*;capture=camcorder"/>
 
     <div class="row">
       <div class="col">
