@@ -24,9 +24,9 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
         transformRequest: angular.identity,
         headers: {'Content-Type': undefined}
     })
-    .success(function(resp){
+    .success(function(data){
       console.log('post review');
-      console.log(resp);
+      console.log(data);
       $scope.review.videoURL = resp.data.videoURL;
       return $http({
         method: 'POST',
