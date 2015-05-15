@@ -41,11 +41,8 @@
       <ion-header-bar align-title="left" class="bar-dark bar-header mainHeader" ng-hide="obj.hideMainHeader">
         <div class="title" ng-click="goHome()"></div>
         <div class="buttons">
-          <i ng-click="recordVideo()" class="icon ion-videocamera"></i>
-          <form ng-hide="true" action="upload.htm" method="post" enctype="multipart/form-data">
-            <input ng-hide="true" id="videoCapture" placeholder="Record a Video" ng-model="movie" type="file" accept="video/*;capture=camcorder"/>
-            <input class="button button-block" type="submit" value="Upload">
-          </form>
+          <i ng-click="Record()" id="videoCapture" class="icon ion-videocamera"></i>
+          <input ng-hide="true" id="videoInput" placeholder="Record a Video" ng-model="movie" type="file" accept="video/*;capture=camcorder"/>
           <button class="button button-icon icon ion-navicon"></button>
         </div>
 

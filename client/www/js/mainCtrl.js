@@ -32,7 +32,7 @@ and clears query so the search bar is empty*/
 
   $scope.obj = liveFactory;
 
-  $scope.recordVideo = function(){
+  $scope.Record = function(){
     console.log('record video');
     //angular.element("#captureVideo").trigger('click');
     $("#videoCapture").trigger('click');
