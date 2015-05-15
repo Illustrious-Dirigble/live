@@ -18,6 +18,7 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
   $scope.postReview = function (){
     console.log('post video');
     var fd = new FormData();
+    console.log(fd);
     fd.append('file', $scope.video);
     $http.post('/api/photo', fd, {
         transformRequest: angular.identity,
@@ -25,6 +26,7 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
     })
     .success(function(resp){
       console.log('post review');
+      console.log(resp);
       $scope.review.videoURL = resp.data.videoURL;
       return $http({
         method: 'POST',
