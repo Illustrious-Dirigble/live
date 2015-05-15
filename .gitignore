@@ -3,6 +3,7 @@ node_modules/
 bower_components/
 *.log
 
+client/www/lib/
 build/
 dist/
 db/
