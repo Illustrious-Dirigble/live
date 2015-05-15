@@ -16,6 +16,7 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
   };
   // post a new review for the artist
   $scope.postReview = function (){
+    console.log('post video');
     return $http({
       method:"post",
       enctype:"multipart/form-data",
@@ -23,6 +24,7 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
       data: $scope.video
     })
     .then(function(resp) {
+      console.log('post review');
       $scope.review.videoURL = resp.data.videoURL;
       return $http({
         method: 'POST',
@@ -30,6 +32,7 @@ function reviewCreateCtrl($scope, $http, $location, $interval, liveFactory){
         data: $scope.review
       })
       .then(function (resp) {
+        console.log('respond with review');
         console.log('response data:', resp.data);
         $scope.getAvgRating();
         return resp.data;

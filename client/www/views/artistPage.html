@@ -39,21 +39,20 @@
       <ion-list class="reviews">
         <ion-item ng-repeat="review in reviews | orderBy: '-createdAt' " class="review item-avatar">
           <img src="./assets/hipster.png">
-          <div class="col">
               <!--
+          <div class="col">
                 <video width="32" height="24" poster="./assets/hipster.png" controls>
                 <iframe src="https://www.youtube.com/embed/gvI2ClWqHO0" frameborder="0" width="96" height="64"></iframe>
                 <iframe src="./assets/movie.mp4" frameborder="0" width="96" height="64"></iframe>
               <iframe src="https://hr26live.s3.amazonaws.com/small.mp4" frameborder="0" width="96" height="64" autoplay="0" autostart="0"></iframe>
-              -->
             <div class="video-container">
               <video ng-click="playVideo(review, $event)" width="225" height="150" controls>
-                <source src="http://www.quirksmode.org/html5/videos/big_buck_bunny.mp4" type="video/mp4">
-                <source src="movie.ogg" type="video/ogg">
+                <source src={{review. type="video/mp4">
                   Your browser does not support the video tag.
               </video>
             </div>
           </div>
+              -->
           <div class="row">
             <div class="col">
               <h1>{{review.username}}</h1>
@@ -76,7 +75,7 @@
                 -->
               <div class="video-container">
                 <video ng-click="playVideo(review, $event)" width="96" height="64" controls>
-                  <source src="https://s3-us-west-1.amazonaws.com/hr26live/capturedvideo.mov" type="video/mov">
+                  <source src={{review.videoURL}} type="video/mov">
                   <!--<source src="./assets/movie.mp4" type="video/mp4">-->
                   <source src="movie.ogg" type="video/ogg">
                     Your browser does not support the video tag.

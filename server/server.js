@@ -78,8 +78,7 @@ app.post('/api/photo',function(req,res){
   if (done === true) {
     done = false;
     //console.log(req.files);
-    res.data({videoURL:uniqueName});
-    res.end();
+    res.json({videoURL:uniqueName});
   }
 });
 
