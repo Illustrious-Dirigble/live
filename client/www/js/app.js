@@ -19,8 +19,13 @@ angular.module('liveApp', ['ionic', 'ionic.rating'])
 })
 //setting up the states the app can be in
 //each state has an unqique url and controller
-.config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider, $sceDelegateProvider){
   $urlRouterProvider.otherwise('/');
+
+  $sceDelegateProvider.resourceUrlWhitelist([
+    'self',
+    'https://hr26livetranscode.s3.amazonaws.com/**'
+  ]);
 
 //home page
   $stateProvider.state('home', {
